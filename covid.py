@@ -10,12 +10,15 @@ def download_summary():
 
 	"""
   # Send the HTTP request
+  response = get(f'{URL_API}/summary')
   # Check for the HTTP response status 200 (OK)
+  if response.status_code == 200:
   	# Return the response as JSON
-return response.json()
+    return response.json()
   # Otherwise, something went wrong
     # Show the error message
+  else:
  # Log the error message
-        logging.error(f'An error has occurred: HTTP status {response.status_code}')
+      logging.error(f'An error has occurred: HTTP status {response.status_code}')
         # Return an empty result
         return {}
